@@ -31,11 +31,10 @@ Count Pairs With Given Sum
 
 */
 #include <bits/stdc++.h>
-using namespace std
+using namespace std;
 
-class Solution {
-  public:
-    int countPairs(vector<int> &arr, int target) {
+
+int countPairs(vector<int> &arr, int target) {
         // Code here
         int n=arr.size();
         int sum=0;
@@ -62,6 +61,6 @@ class Solution {
             mp[arr[i]]++;
         }
         return sum;
-    }
-};
+}
+
 
