@@ -60,6 +60,8 @@ int longestSubarray(vector<int>& arr, int k) {
         for(int i=0;i<n;i++){
             sum+=arr[i];
             // 1. If sum itself is k, subarray starts from index 0
+
+            //if we dont want to put this statment here then in up we need to initialze with prefixxum_mp[0]=-1;
             if(sum==k){
                 longest=max(longest,i+1);
             }
