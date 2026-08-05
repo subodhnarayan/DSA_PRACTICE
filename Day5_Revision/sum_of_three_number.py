@@ -40,16 +40,15 @@
 
 
 
-
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
 
-        nums.sort()
-        my_set=set()
-        my_ans=[]
         n=len(nums)
+        nums.sort()
 
-        #Brute forece o(n3)
+        #Brute Force Approach
+        #TC=0(n3) and sc=0(n)
+        # my_set=set()
         # for i in range(0,n-2):
         #     for j in range(i+1,n-1):
         #         for k in range(j+1,n):
@@ -57,50 +56,44 @@ class Solution:
         #             if sum == 0:
         #                 my_set.add((nums[i],nums[j],nums[k]))
 
-
-
+        
+        # my_arr=[]
         # for ele in my_set:
-        #     my_ans.append(list(ele))
-
-        # return my_ans
+        #     my_arr.append(list(ele))
 
 
-        #optimized way
+        # return my_arr
+
+
+        #optimized Approach
+        my_ans=[]
         if n<3:
-            return []
-        for i in range (0,n-2):
-            if i>0 and nums[i]==nums[i-1]:
+            return my_ans
+        for i in range(0,n-2):
+            if(i>0) and nums[i]==nums[i-1]:
                 continue
+
             start=i+1
             end=n-1
-            while(start<end):
+            while start<end:
                 rem=0-nums[i]
-                sum=nums[start]+nums[end]
-                if sum==rem:
+                c_sum=nums[start]+nums[end]
+                if rem==c_sum:
                     my_ans.append([nums[i],nums[start],nums[end]])
-                    start=start+1
-                    end=end-1
+                    start+=1
+                    end-=1
+
                     while start<end and nums[start-1]==nums[start]:
-                        start=start+1
-                    while start<end and nums[end]==nums[end+1]:
-                        end=end-1
-
+                        start+=1
                     
+                    while start<end and nums[end]==nums[end+1]:
+                        end-=1
 
-                elif sum>rem:
-                    end=end-1
+                elif rem<c_sum:
+                    end-=1
 
                 else:
-                    start=start+1
+                    start+=1
 
 
         return my_ans
-
-
-
-                        
-                        
-
-                            
-
-        
