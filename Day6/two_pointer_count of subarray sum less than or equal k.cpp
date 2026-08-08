@@ -41,7 +41,7 @@ int twopointer(vector<int> arr,int k){
             sum-=arr[i];
             i++;
         }
-       count+=(j-i+1);
+       count+=(j-i+1);    //check the length
     }
     return count;
 }
