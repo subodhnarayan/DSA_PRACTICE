@@ -30,30 +30,86 @@ ArraysBinary Search
 
 */
 
-
-#inlcude<bits/stdc++.h>
-using namespace std;
-
-
-vector<int> searchRange(vector<int>& nums, int target) {
-
-        Brute force Approach
-        TC=0(n) and SC=0(1)
-        int n=nums.size();
-        int first=INT_MAX;
-        int last=INT_MIN;
-
+class Solution {
+public:
+    int endIndex(vector<int> &arr,int x){
+        int n=arr.size();
         
-        for(int i=0;i<n;i++){
-            if(nums[i]==target){
-                first=min(first,i);
-                last=max(last,i);
+        int endInd=-1;
+        
+        int left=0;
+        int right=n-1;
+        while(left<=right){
+            int mid=left+(right-left)/2;
+            
+            if(arr[mid]==x){
+                endInd=mid;
+                left=mid+1;
+            }
+            else if(arr[mid]>x){
+                right=mid-1;
+            }
+            else{
+                left=mid+1;
             }
         }
+        
+        if(endInd==n){
+            endInd=-1;
+        }
+        return endInd;
+    }
+    int firstInd(vector<int> &arr,int x){
+        int n=arr.size();
+        
+        int startInd=-1;
+        
+        int left=0;
+        int right=n-1;
+        while(left<=right){
+            int mid=left+(right-left)/2;
+            
+            if(arr[mid]==x){
+                startInd=mid;
+                right=mid-1;
+            }
+            else if(arr[mid]>x){
+                right=mid-1;
+            }
+            else{
+                left=mid+1;
+            }
+        }
+        
+        
+        return startInd;
+    }
+    vector<int> searchRange(vector<int>& nums, int target) {
 
-        if(first==INT_MAX) first=-1;
-        if(last==INT_MIN) last=-1;
-        return {first,last};
+        //Brute force Approach
+        //TC=0(n) and SC=0(1)
+        // int n=nums.size();
+        // int first=INT_MAX;
+        // int last=INT_MIN;
 
+        
+        // for(int i=0;i<n;i++){
+        //     if(nums[i]==target){
+        //         first=min(first,i);
+        //         last=max(last,i);
+        //     }
+        // }
 
-}
+        // if(first==INT_MAX) first=-1;
+        // if(last==INT_MIN) last=-1;
+        // return {first,last};
+
+        //optmized appraoch using binary search
+        int n=nums.size();
+        int start=0;
+        int end=n-1;
+
+        if (nums.empty()) return {-1, -1};
+       return {firstInd(nums,target),endIndex(nums,target)};
+    }
+};
