@@ -34,6 +34,13 @@ Follow up: Could you minimize the total number of operations done?
 
 */
 
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
