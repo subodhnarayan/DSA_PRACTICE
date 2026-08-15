@@ -46,7 +46,7 @@ bool isPalindrome(string& s) {
         //TC=0(n/2)
         
         while(start<end){
-            if(s[start]!=s[end]){
+            if(s[start]!=sg[end]){
                 return false;
             }
             start++;
