@@ -9,6 +9,7 @@ def countsubarray(arr,k):
     #TC=0(n2) and SC=(n)
 
     # for i in range(0,n):
+    #     sum=0
     #     for j in range(i,n):
     #         sum+=arr[j]
 
