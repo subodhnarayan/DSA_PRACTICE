@@ -44,6 +44,9 @@ class Solution {
         //     ans=min(ans,arr[i]);
         // }
         // return ans;
+
+        //Optimized Approach using Binary Search
+        //TC=O(long) and SC=O(1)
         
         int start=0;
         int end=n-1;
@@ -51,10 +54,11 @@ class Solution {
         while(start<end){
             int mid=start+(end-start)/2;
             
-            if(arr[mid]>arr[end]){
+            if(arr[mid]>arr[end]){ // this means the minimum element is in right sorted array so let check in that
                 start=mid+1;
             }
             else{
+                //this mean the minimum element is the left sorted order if(arr[mid]<=arr[end]) then we need to find in the left side right
                 end=mid;
             }
         }
